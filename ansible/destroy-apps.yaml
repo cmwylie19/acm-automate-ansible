@@ -1,0 +1,7 @@
+---
+- name: deploy httpbin app
+  hosts: localhost
+  gather_facts: false
+
+  roles:
+    - destroy-apps

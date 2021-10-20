@@ -1,0 +1,18 @@
+---
+- name: Destroy HTTPBIN manifests ACM Hub
+  kubernetes.core.k8s:
+    state: absent
+    src: "{{ role_path }}/files/application.yaml"
+  register: httpbin_output
+
+- name: HTTPBIN Output
+  debug: msg="{{httpbin_output}}"
+
+- name: Destroy Placement manifests ACM Hub
+  kubernetes.core.k8s:
+    state: absent
+    src: "{{ role_path }}/files/placement-rule-dev-clusters.yaml"
+  register: placement_output
+
+- name: Placement Output
+  debug: msg="{{placement_output}}"
